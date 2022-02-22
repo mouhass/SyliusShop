@@ -253,3 +253,40 @@ sylius_theme:
             scan_depth: 1
             directories:
                 - "%kernel.project_dir%/themes"
+#la configration de grid
+sylius_grid:
+    grids:
+        app_admin_book:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: App\Entity\Book
+                    repository:
+                        method: myAuthorGridQuery
+                       # arguments: [Author]
+            filters:
+                title:
+                    type: string
+                name:
+                    type: string
+                    label: nom auteur
+                    options:
+                        fields: [author.name]
+ 
+            sorting:
+                title: asc
+            fields:
+                title:
+                    type: string
+                    label: Title
+                    sortable: ~
+                writtenBy:
+                    type: string
+                    label: author
+                    sortable: author.name
+                
+                    
+                    
+                    
+                        
+                    

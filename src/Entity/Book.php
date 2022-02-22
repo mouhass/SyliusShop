@@ -8,9 +8,12 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
  * @ORM\Entity(repositoryClass=BookRepository::class)
+ *
  */
+
 class Book implements ResourceInterface
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -21,14 +24,37 @@ class Book implements ResourceInterface
      * @ORM\Column(type="string", nullable=true)
      */
     private $title;
+
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="books")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $author;
+    private $writtenBy;
+
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $desscription;
+    private $description;
+
+    /**
+     * @return mixed
+     */
+    public function getWrittenBy()
+    {
+        return $this->writtenBy;
+    }
+
+    /**
+     * @param mixed $writtenBy
+     * @return Book
+     */
+    public function setWrittenBy($writtenBy)
+    {
+        $this->writtenBy = $writtenBy;
+        return $this;
+    }
+
+
 
     /**
      * @return mixed
@@ -46,36 +72,21 @@ class Book implements ResourceInterface
         $this->title = $title;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    /**
-     * @param mixed $author
-     */
-    public function setAuthor($author): void
-    {
-        $this->author = $author;
-    }
 
     /**
      * @return mixed
      */
-    public function getDesscription()
+    public function getDescription()
     {
-        return $this->desscription;
+        return $this->description;
     }
 
     /**
-     * @param mixed $desscription
+     * @param mixed $description
      */
-    public function setDesscription($desscription): void
+    public function setDescription($description): void
     {
-        $this->desscription = $desscription;
+        $this->description = $description;
     }
 
 

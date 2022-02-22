@@ -1,0 +1,10 @@
+app:
+    ui:
+        book: Livre
+        books: Livres
+    menu:
+        admin:
+            main:
+                additional:
+                    header: Additional
+                    books: Livres

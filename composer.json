@@ -17,6 +17,7 @@
     "require": {
         "php": "^7.3",
         "cweagans/composer-patches": "^1.7",
+        "sylius/grid-bundle": "1.8",
         "sylius/sylius": "~1.7.0@rc",
         "symfony/dotenv": "^4.4",
         "symfony/flex": "^1.2",

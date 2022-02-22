@@ -13,4 +13,16 @@ use Sylius\Component\Addressing\Model\Country as BaseCountry;
  */
 class Country extends BaseCountry
 {
+    /** @ORM\Column(type="string", nullable=true) */
+    private $flag;
+
+    public function getFlag(): ?string
+    {
+        return $this->flag;
+    }
+
+    public function setFlag(string $flag): void
+    {
+        $this->flag = $flag;
+    }
 }

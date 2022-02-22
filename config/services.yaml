@@ -33,3 +33,14 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+
+    app.book.form.type:
+        class: App\Form\Type\BookType
+        tags:
+            - { name: form.type }
+        arguments: ['%app.model.book.class%']
+        
+#    App\Controller\BookController:
+#        autowire: false
+#        public: true
+   

@@ -7,3 +7,8 @@ sylius_resource:
             classes:
                 model: App\Entity\Book
                 repository: App\Repository\BookRepository
+#                controller: App\Controller\BookController
+        app.Author:
+            classes:
+                model: App\Entity\Author
+                repository: App\Repository\AuthorRepository

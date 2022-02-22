@@ -1,5 +1,62 @@
-app_book:
+#création => admin
+app_admin_book_create:
+    path: admin/books/{title}/{description}
+    methods: [GET,PUT]
+    defaults:
+        _controller: app.controller.book:createAction
+
+#l'affichage des livres => admin
+app_book_index_top:
+    path: admin/books/top
+    methods: [GET]
+    defaults:
+        _controller: app.controller.book:indexAction
+
+#affichage avec pagination =>admin
+app_admin_book_index_inactive:
+    path: admin/books/disabled
+    methods: [GET]
+    defaults:
+        _controller: app.controller.book:showAllAction
+#        _sylius:
+#            paginate: false
+#            limit: 3
+#            sorting:
+#                score: desc
+            #template: Book/top.html.twig
+
+##ici tous les api crud de l'entit book
+#app_book:
+#    resource: |
+#        alias: app.book
+#        path: /admin/books
+#    type: sylius.resource
+    
+app_admin_book:
     resource: |
         alias: app.book
-    type: sylius.resource_api
-    
+        section: admin
+        templates: "@SyliusAdmin\\Crud"
+        redirect: update
+        grid: app_admin_book
+        vars:
+            all:
+                subheader: app.ui.books
+            index:
+                icon: 'book' # choose an icon that will be displayed next to the subheader
+    type: sylius.resource
+    prefix: admin
+#l'affichage d'un seul livre    => tout utilisateur   
+#app_book_show:
+#    path: books/{title}
+#    methods: [GET]
+#    defaults:
+#        _controller: app.controller.book:showAction
+#        _sylius:
+#            template: show.html.twig
+#            repository:
+#                method: findOneBySomeField
+#                arguments: [$title]
+#            criteria:
+#                enabled: true
+#                
